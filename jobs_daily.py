@@ -25,6 +25,10 @@ URLS = [
 # Glassdoor
 "https://www.glassdoor.co.in/Job/india-entry-level-data-analyst-jobs-SRCH_IL.0,5_IN115_KO6,30.htm",
 
+# Startups (AngelList / Wellfound)
+"https://wellfound.com/jobs?query=data%20analyst",
+
+
 # AngelList (startups)
 "https://wellfound.com/jobs?query=data%20analyst"
 ]
@@ -37,8 +41,16 @@ ENTRY_KEYWORDS = [
 "fresher",
 "trainee",
 "associate",
-"graduate"
+"graduate",
+"intern",
+"internship",
+"0-1",
+"0 to 1",
+"6 months",
+"6month",
+"six months"
 ]
+
 
 def scrape():
     jobs = []
@@ -108,4 +120,5 @@ def send_email(jobs):
 
 jobs = scrape()
 send_email(jobs)
+
 
