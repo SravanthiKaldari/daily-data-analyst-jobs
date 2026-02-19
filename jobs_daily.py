@@ -9,11 +9,26 @@ EMAIL_PASS = os.getenv("EMAIL_PASS")
 EMAIL_TO   = os.getenv("EMAIL_TO")
 
 # Search URLs (India + Remote focus)
+# Search URLs (Multiple Platforms - India + Remote)
 URLS = [
-"https://www.indeed.com/jobs?q=entry+level+data+analyst&l=India",
-"https://www.indeed.com/jobs?q=fresher+data+analyst&l=Remote",
-"https://www.indeed.com/jobs?q=junior+data+analyst&l=India"
+
+# Indeed
+"https://www.indeed.co.in/jobs?q=entry+level+data+analyst&l=India",
+"https://www.indeed.co.in/jobs?q=fresher+data+analyst&l=Remote",
+
+# LinkedIn
+"https://www.linkedin.com/jobs/search/?keywords=entry%20level%20data%20analyst&location=India",
+
+# Naukri
+"https://www.naukri.com/entry-level-data-analyst-jobs",
+
+# Glassdoor
+"https://www.glassdoor.co.in/Job/india-entry-level-data-analyst-jobs-SRCH_IL.0,5_IN115_KO6,30.htm",
+
+# AngelList (startups)
+"https://wellfound.com/jobs?query=data%20analyst"
 ]
+
 
 # keywords to ensure fresher-level roles
 ENTRY_KEYWORDS = [
@@ -57,7 +72,8 @@ def scrape():
 
                 # fix relative links
                 if link.startswith("/"):
-                    link = "https://www.indeed.com" + link
+                    link = url.split("/")[0] + "//" + url.split("/")[2] + link
+
 
                 jobs.append((title, link))
 
@@ -92,3 +108,4 @@ def send_email(jobs):
 
 jobs = scrape()
 send_email(jobs)
+
